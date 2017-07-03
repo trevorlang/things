@@ -1,12 +1,49 @@
-#!/usr/bin/env nodejs
-'use strict'
+'use strict';
 
-const path = require('path');
-const fs = require('fs');
-const http = require('http');
+var path = require("path");
+var express = require("express");
+var webpack = require("webpack");
+var webpackDevMiddleware = require("webpack-dev-middleware");
+var webpackHotMiddleware = require("webpack-hot-middleware");
+var config = require("../webpack.dev.config.js");
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(8080, 'localhost');
-console.log('Server running at http://localhost:8080/');
+var app = express(),
+    DIST_DIR = path.join(__dirname, "dist"),
+    HTML_FILE = path.join(DIST_DIR, "index.html"),
+    isDevelopment = process.env.NODE_ENV !== "production",
+    DEFAULT_PORT = 3000,
+    compiler = webpack(config);
+
+app.set("port", process.env.PORT || DEFAULT_PORT);
+
+console.log("Starting up server");
+
+if (isDevelopment) {
+  app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath
+  }));
+
+  app.use(webpackHotMiddleware(compiler));
+
+  app.get("*", function (req, res, next) {
+
+    console.log("Request received");
+
+    compiler.outputFileSystem.readFile(HTML_FILE, function (err, result) {
+      if (err) {
+        return next(err);
+      }
+      res.set('content-type', 'text/html');
+      res.send(result);
+      res.end();
+    });
+  });
+} else {
+  app.use(express.static(DIST_DIR));
+
+  app.get("*", function (req, res) {
+    return res.sendFile(HTML_FILE);
+  });
+}
+
+app.listen(app.get("port"));

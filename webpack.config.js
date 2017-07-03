@@ -1,5 +1,7 @@
+const path = require("path");
+
 module.exports = {
-  context: __dirname + "/client",
+  context: __dirname + "/src",
 
   entry: {
     app: "./js/app.js",
@@ -9,10 +11,17 @@ module.exports = {
   output: {
     filename: "[name].js",
     path: __dirname + "/dist",
+    publicPath: "/dist"
   },
 
   resolve: {
     extensions: ['.js', '.jsx', '.json']
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 9000
   },
 
   module: {
