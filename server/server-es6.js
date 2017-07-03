@@ -10,7 +10,7 @@ const config = require("../webpack.dev.config.js");
 const app           = express(),
       DIST_DIR      = path.join(__dirname, "dist"),
       HTML_FILE     = path.join(DIST_DIR, "index.html"),
-      isDevelopment = process.env.NODE_ENV !== "production",
+      is_development = process.env.NODE_ENV !== "production",
       DEFAULT_PORT  = 3000,
       compiler      = webpack(config);
 
@@ -20,7 +20,9 @@ console.log("Starting up server");
 
 console.log("Current environment:" + process.env.NODE_ENV);
 
-if (isDevelopment) {
+is_development = false;
+
+if (is_development) {
 
   console.log('Welcome to Dev');
 
