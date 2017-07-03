@@ -1,18 +1,17 @@
 module.exports = {
-  context: __dirname + "/src",
-
   entry: {
-    app: "./js/app.js",
-    html: "./index.html",
+    app: "./dist/app.js",
+    html: "./dist/index.html",
   },
 
   output: {
     filename: "[name].js",
     path: __dirname + "/dist",
+    publicPath: "/dist"
   },
 
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json']
   },
 
   module: {

@@ -10,6 +10,10 @@ module.exports = {
     publicPath: "/dist"
   },
 
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.json']
+  },
+
   module: {
     loaders: [
       {
