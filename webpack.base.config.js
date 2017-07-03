@@ -1,7 +1,11 @@
+const path = require('path');
+
 module.exports = {
+  context: __dirname + "/src",
+
   entry: {
-    app: "./dist/app.js",
-    html: "./dist/index.html",
+    app: "./js/app.js",
+    html: "./index.html",
   },
 
   output: {
@@ -12,6 +16,12 @@ module.exports = {
 
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json']
+  },
+
+  devServer: {
+    contentBase: path.join(__dirname, "dist"),
+    compress: true,
+    port: 8080
   },
 
   module: {
