@@ -6,7 +6,7 @@ baseConfig.devtool = "cheap-module-source-map";
 baseConfig.plugins = [
     new webpack.DefinePlugin({
         "process.env": {
-            "NODE_ENV": JSON.stringify("production")
+            "ENV": JSON.stringify("production")
         }
     })
 ];
