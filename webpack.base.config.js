@@ -18,12 +18,6 @@ module.exports = {
     extensions: ['*', '.js', '.jsx', '.json']
   },
 
-  devServer: {
-    contentBase: path.join(__dirname, "dist"),
-    compress: true,
-    port: 8080
-  },
-
   module: {
     loaders: [
       {

@@ -11,7 +11,7 @@ var app = express(),
     DIST_DIR = path.join(__dirname, "dist"),
     HTML_FILE = path.join(DIST_DIR, "index.html"),
     is_development = process.env.NODE_ENV !== "production",
-    DEFAULT_PORT = 3000,
+    DEFAULT_PORT = 8080,
     compiler = webpack(config);
 
 app.set("port", process.env.PORT || DEFAULT_PORT);
