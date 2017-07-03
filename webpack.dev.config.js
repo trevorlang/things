@@ -9,4 +9,18 @@ module.exports = {
     path: __dirname + "/dist",
     publicPath: "/dist"
   },
+
+  module: {
+    loaders: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loaders: ["react-hot-loader","babel-loader"]
+      },
+      {
+        test: /\.html$/,
+        loader: "file-loader?name=[name].[ext]",
+      }
+    ]
+  }
 };

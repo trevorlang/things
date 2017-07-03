@@ -19,6 +19,9 @@ app.set("port", process.env.PORT || DEFAULT_PORT);
 console.log("Starting up server");
 
 if (isDevelopment) {
+
+  console.log('Welcome to Dev');
+
   app.use(webpackDevMiddleware(compiler, {
       publicPath: config.output.publicPath
   }));
