@@ -15,7 +15,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json']
+    extensions: ['*', '.js', '.jsx', '.json']
   },
 
   devServer: {
@@ -25,13 +25,6 @@ module.exports = {
   },
 
   module: {
-    preLoaders: [
-      {
-        test:    /\.jsx?$/,
-        exclude: /node_modules/,
-        loader:  "eslint-loader"
-      }
-    ],
     loaders: [
       {
         test: /\.jsx?$/,
