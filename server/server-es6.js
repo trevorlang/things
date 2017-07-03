@@ -20,9 +20,7 @@ console.log("Starting up server");
 
 console.log("Current environment:" + process.env.NODE_ENV);
 
-is_development = false;
-
-if (is_development) {
+if (false) {
 
   console.log('Welcome to Dev');
 
