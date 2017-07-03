@@ -13,9 +13,6 @@
   "betterScripts": {
     "build": {
       "command": "npm run build:server && npm run build:client",
-      "env": {
-        "NODE_ENV": "production"
-      }
     }
   },
   "author": "",
