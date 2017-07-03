@@ -4,8 +4,8 @@
   "description": "The Things web app",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node server/server.js",
-    "build:server": "babel server/server-es6.js --out-file server/server.js",
+    "start": "babel-node server.js",
+    "build:server": "babel server-es6.js --out-file server.js",
     "build:client": "webpack -p --config webpack.prod.config.js --progress",
     "build": "better-npm-run build",
     "clean": "rimraf dist/* && rimraf server/server.js"
