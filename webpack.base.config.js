@@ -1,21 +1,25 @@
 const path = require('path');
 
 module.exports = {
-  context: __dirname + "/src",
 
   entry: {
-    app: "./js/app.js",
-    html: "./index.html",
+    "main": "./src/js/app.js",
+    "index": "./src/index.html"
   },
 
   output: {
     filename: "[name].js",
-    path: __dirname + "/dist",
-    publicPath: "/dist"
+    path: path.resolve(__dirname, "dist/"),
   },
 
   resolve: {
     extensions: ['*', '.js', '.jsx', '.json']
+  },
+
+  devServer: {
+    contentBase: "dist",
+    compress: true,
+    port: 3000
   },
 
   module: {
@@ -23,7 +27,16 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ["react-hot-loader","babel-loader"]
+        loader: "react-hot-loader",
+      },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: "babel-loader",
+        query: {
+          plugins: ['transform-runtime', 'transform-object-rest-spread'],
+          presets: ['es2015', 'react', 'stage-0'],
+        }
       },
       {
         test: /\.html$/,
